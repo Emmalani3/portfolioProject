@@ -1,0 +1,38 @@
+* {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: ivory;
+}
+header {
+    background-color: darkred;
+    color: white;
+    padding: 10px;  
+    justify-items: center;  
+    margin-bottom: 20px;
+}
+
+main {
+    display: inline-block;
+    width: 100%;
+    align-items: center;
+    border: 2px solid black;
+}
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+#question,
+#button1,
+#button2,
+#button3 {
+    margin: 10px;
+    text-align: center;
+}

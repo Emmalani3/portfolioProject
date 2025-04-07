@@ -5,6 +5,33 @@
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+    <header>
+        <h1>Whats For Dinner?</h1>
+        <p>A web app to help you choose what to make</p>
+    </header>
 
+    <main>
+        <div id="question">
+            <h2>Do you want to cook tonight or go out to eat?</h2>
+        </div>
+        <div id="button1">
+            <input type="radio" id="cook" value="cook" name="inOrOut">
+            <label for="cook">Lets Cook!</label>
+            <input type="radio" id="restaurant" value="restaurant" name="inOrOut">
+            <label for="restaurant">Lets Go Out!</label>
+        </div>
+        <div id="button2">
+            <input type="checkbox" name="Easy" value="Easy" id="Easy">Make it Easy?</checkbox> 
+        </div>
+        <div id="button3">
+            <input type="checkbox" name="fancy" value="fancy" id="fancy">Lets Go Fancy!</checkbox>
+            <input type="checkbox" name="cheap" value="cheap" id="cheap">Lets go Cheap</checkbox>
+            <input type="checkbox" name="deliver" value="deliver" id="deliver">Make it Come to Me</checkbox>
+            <input type="checkbox" name="late" value="late" id="late">Open Late</checkbox>
+
+        </div>
+
+    </main>
 </body>
+
 </html>
