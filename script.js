@@ -162,4 +162,30 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("Please select whether you want to cook or go out!");
         }
     });
+
+    
+    const reset = document.getElementById('reset');
+
+    let lastFiltered = [];  // to remember the previous filtered array
+    let lastType = "";      // to remember if it was cook/out/takeout
+
+
+    reset.addEventListener('click', function () {
+        // Reset all radio buttons and checkboxes
+        document.querySelectorAll('input[type=radio], input[type=checkbox]').forEach(input => {
+            input.checked = false;
+        });
+
+        // Hide secondary option boxes
+        button2.hidden = true;
+        button3.hidden = true;
+
+        // Clear the result
+        document.getElementById('result').textContent = "";
+
+        // Reset state
+        lastFiltered = [];
+        lastType = "";
+    });
+
 });
