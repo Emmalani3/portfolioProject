@@ -66,10 +66,16 @@ const restaurants = [
     { name: "Bruchetta", type: "cook", difficulty: "Easy" },
     { name: "Loco Moco", type: "cook", difficulty: "Easy" },
   ];
-  document.addEventListener('DOMContentLoaded', function () {
-    let inOrOut = document.getElementById('inOrOut');
-    let cook = document.getElementById('cook');
-    let restaurant = document.getElementById('restaurant');
+
+//global definiions
+let cook = document.getElementById('cook');
+let restaurant = document.getElementById('restaurant');
+let takeOut = document.getElementById('takeOut');
+const submit = document.getElementById('submit');
+
+//shows additional options
+document.addEventListener('DOMContentLoaded', function () {
+
     let button2 = document.getElementById('button2');
     let button3 = document.getElementById('button3');
 
@@ -79,9 +85,79 @@ const restaurants = [
     cook.onclick = function() {
         button2.hidden = false;
         button3.hidden = true;
-    }
+    };
     restaurant.onclick = function() {
         button3.hidden = false;
         button2.hidden = true;
+    };
+    takeOut.onclick = function() {
+        button3.hidden = false;
+        button2.hidden = true;
+    };
+});
+
+function randomNum(arr) {
+    if (arr.length === 0) {
+        return "No matches found!";
+    }
+    const num = Math.floor(Math.random() * arr.length);
+    return arr[num].name;
+}
+
+
+submit.addEventListener('click', function (e) {
+    e.preventDefault(); // prevent page reload
+
+    const selectedType = cook.checked ? 'cook' : restaurant.checked ? 'out' : null;
+
+    if (selectedType === 'cook') {
+        const easy = document.getElementById('Easy').checked;
+        const hard = document.getElementById('Hard').checked;
+
+        // Filter recipes based on difficulty checkboxes
+        let filtered = recipes.filter(d =>
+            (!easy || d.difficulty === 'Easy') &&
+            (!hard || d.difficulty === 'Hard')
+        );
+
+        const choice = randomNum(filtered); // ✅ Now in the correct scope
+        console.log("Recipe Idea:", choice);
+        document.getElementById('result').textContent = `Recipe Idea: ${choice}`;
+
+
+    } else if (selectedType === 'out') {
+        const fancy = document.getElementById('fancy').checked;
+        const cheap = document.getElementById('cheap').checked;
+        const late = document.getElementById('late').checked;
+
+        // Filter restaurants based on fancy/cheap/late
+        let filtered = restaurants.filter(d =>
+            (!fancy || d.price === 'fancy') &&
+            (!cheap || d.price === 'cheap') &&
+            (!late || d.openLate === true)
+        );
+
+        const choice = randomNum(filtered);
+        console.log("Restaurant Idea:", choice);
+        document.getElementById('result').textContent = `Restaurant Idea: ${choice}`;
+
+    } else if (selectedType === 'takeOut') {
+        const fancy = document.getElementById('fancy').checked;
+        const cheap = document.getElementById('cheap').checked;
+        const late = document.getElementById('late').checked;
+
+        // Filter restaurants based on fancy/cheap/late
+        let filtered = restaurants.filter(d =>
+            (!fancy || d.price === 'fancy') &&
+            (!cheap || d.price === 'cheap') &&
+            (!late || d.openLate === true)
+        );
+
+        const choice = randomNum(filtered);
+        console.log("Take Out Idea:", choice);
+        document.getElementById('result').textContent = `Take Out Idea: ${choice}`;
+
+    } else {
+        alert("Please select whether you want to cook or go out!");
     }
 });

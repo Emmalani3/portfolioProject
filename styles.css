@@ -16,9 +16,11 @@ header {
 }
 
 main {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers children horizontally */
+    justify-content: center;
     width: 100%;
-    align-items: center;
     border: 2px solid black;
 }
 h1 {
@@ -32,7 +34,26 @@ h2 {
 #question,
 #button1,
 #button2,
-#button3 {
+#button3,
+#submit {
     margin: 10px;
+    text-align: center;    
+}
+
+input {
+    margin: 0 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers children horizontally */
+    justify-content: center;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
+    color: darkgreen;
 }
